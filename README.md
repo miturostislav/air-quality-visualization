@@ -1,3 +1,6 @@
+# air-quality-visualization
+Web app which displays historical air quality data taken from the https://docs.openaq.org/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
