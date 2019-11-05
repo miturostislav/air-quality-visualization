@@ -10,6 +10,8 @@ function App() {
   const [selectedCities, setSelectedCities] = React.useState<City[]>([]);
   const [selectedParameters, setSelectedParameters] = React.useState<Parameter[]>([]);
   const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
+  const [isFilerSectionOpened, setIsFilerSectionOpened] = React.useState(true);
+  const filtersWrapperRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <div className="page">
@@ -20,11 +22,18 @@ function App() {
       <main className="page__body">
         <LocationSearch selectedCountry={selectedCountry} setSelectedCountry={setSelectedCountry} />
         <div className="page__filters">
-          <CountryFilter selectedCountries={selectedCountries} setSelectedCountries={setSelectedCountries} />
-          <hr className="separator" />
-          <CityFilter selectedCities={selectedCities} setSelectedCities={setSelectedCities} selectedCountries={selectedCountries} />
-          <hr className="separator" />
-          <ParameterFilter selectedParameters={selectedParameters} setSelectedParameters={setSelectedParameters} />
+          <button className="page__filters-title" onClick={() => setIsFilerSectionOpened(!isFilerSectionOpened)}>Filters</button>
+          <div
+            className="page__filters-wrapper"
+            ref={filtersWrapperRef}
+            style={{ maxHeight: isFilerSectionOpened ? (filtersWrapperRef.current ? filtersWrapperRef.current.scrollHeight : 0) : 0 }}
+          >
+            <CountryFilter selectedCountries={selectedCountries} setSelectedCountries={setSelectedCountries} />
+            <hr className="separator" />
+            <CityFilter selectedCities={selectedCities} setSelectedCities={setSelectedCities} selectedCountries={selectedCountries} />
+            <hr className="separator" />
+            <ParameterFilter selectedParameters={selectedParameters} setSelectedParameters={setSelectedParameters} />
+          </div>
         </div>
         <div className="page__results">Page results</div>
       </main>
