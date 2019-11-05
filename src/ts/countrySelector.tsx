@@ -43,11 +43,11 @@ function CountrySelector({ selectedCountry, setSelectedCountry }: CountrySelecto
   }
 
   return (
-    <div className={`country-selector ${isSelectorFocused ? 'country-selector--has-focus' : ''}`}>
-      <div className="country-selector__input-wrapper">
+    <div className={`input-selector ${isSelectorFocused ? 'input-selector--has-focus' : ''}`}>
+      <div className="input-selector__input-wrapper">
         <input
           type="text"
-          className={`country-selector__input ${!!countryInput ? 'country-selector__input--has-value' : ''}`}
+          className={`input-selector__input ${!!countryInput ? 'input-selector__input--has-value' : ''}`}
           name="countrySelector"
           id="countrySelector"
           onFocus={onFocus}
@@ -55,14 +55,14 @@ function CountrySelector({ selectedCountry, setSelectedCountry }: CountrySelecto
           onChange={onChange}
           value={countryInput}
         />
-        <label className="country-selector__label" htmlFor="countrySelector">Enter a country name</label>
+        <label className="input-selector__label" htmlFor="countrySelector">Enter a country name</label>
       </div>
-      <div className="country-selector__suggestions">
-        <ul className="country-selector__suggestions-list">
+      <div className="input-selector__suggestions">
+        <ul className="input-selector__suggestions-list">
           {
             filteredCountriesByInput.map((country) => (
-              <li key={country.code} className="country-selector__suggestions-item">
-                <button className="country-selector__suggestions-item-button" onClick={() => onCountrySelect(country)}>{country.name}</button>
+              <li key={country.code} className="input-selector__suggestions-item">
+                <button className="input-selector__suggestions-item-button" onClick={() => onCountrySelect(country)}>{country.name}</button>
               </li>
             ))
           }

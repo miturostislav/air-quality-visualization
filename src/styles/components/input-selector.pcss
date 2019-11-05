@@ -1,5 +1,6 @@
-.country-selector {
+.input-selector {
   width: 100%;
+  position: relative;
 
   &__input-wrapper {
     position: relative;
@@ -19,7 +20,7 @@
   }
 
   &--has-focus &__input, &__input--has-value {
-    & ~ .country-selector__label {
+    & ~ .input-selector__label {
       transform: translateY(-8px);
     }
   }
@@ -35,8 +36,11 @@
   }
 
   &__suggestions {
-    position: relative;
-    top: -3px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% - 3px);
+    z-index: 1;
     display: none;
   }
 
