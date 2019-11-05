@@ -1,10 +1,12 @@
 import React from 'react';
 import CountrySelector from './countrySelector';
 import CountryFilter from './countryFilter';
-import { Country } from './types';
+import CityFilter from './cityFilter';
+import { Country, City } from './types';
 
 function App() {
   const [selectedCountries, setSelectedCountries] = React.useState<Country[]>([]);
+  const [selectedCities, setSelectedCities] = React.useState<City[]>([]);
   const [selectedCountry, setSelectedCountry] = React.useState<Country | null>(null);
 
   return (
@@ -18,6 +20,7 @@ function App() {
         <div className="page__filters">
           <CountryFilter selectedCountries={selectedCountries} setSelectedCountries={setSelectedCountries} />
           <hr className="separator" />
+          <CityFilter selectedCities={selectedCities} setSelectedCities={setSelectedCities} selectedCountries={selectedCountries} />
         </div>
         <div className="page__results">Page results</div>
       </main>
