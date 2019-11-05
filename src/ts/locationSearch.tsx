@@ -3,12 +3,12 @@ import ajaxRequest from './helpers/ajaxRequest';
 import InputSelector from './inputSelector';
 import {Country, API} from './types';
 
-interface CountrySelectorProps {
+interface LocationSearchProps {
   selectedCountry: Country | null
   setSelectedCountry: (country: Country) => void
 }
 
-function CountrySelector({ selectedCountry, setSelectedCountry }: CountrySelectorProps): React.ReactElement {
+function LocationSearch({ selectedCountry, setSelectedCountry }: LocationSearchProps): React.ReactElement {
   const [countries, setCountries] = React.useState<Country[]>([]);
 
   React.useState(() => {
@@ -18,8 +18,8 @@ function CountrySelector({ selectedCountry, setSelectedCountry }: CountrySelecto
   });
 
   return (
-    <InputSelector values={countries} onSelectValue={setSelectedCountry} label="Enter a country name" />
+    <InputSelector values={countries} onSelectValue={setSelectedCountry} label="Enter a location name" />
   );
 }
 
-export default CountrySelector;
+export default LocationSearch;

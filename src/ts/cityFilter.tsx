@@ -34,7 +34,7 @@ function CityFilter({ selectedCities, setSelectedCities, selectedCountries }: Ci
 
   React.useEffect(function fetchCitiesByCountries() {
     const promises = countriesToFetchFor.map((country) => (
-      ajaxRequest({ method: 'GET', url: API.GET_CITIES, data: { country: country.code } }).then(
+      ajaxRequest({ method: 'GET', url: API.GET_CITIES, data: { country: country.code, limit: 1000 } }).then(
         ({ results }: { results: City[] }) => results.filter((city) => city.name !== 'N/A' && city.name !== 'unused'))
     ));
     if (promises.length) {
