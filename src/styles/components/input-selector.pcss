@@ -15,11 +15,11 @@
     font-size: var(--font-size-14);
   }
 
-  &--has-focus &__input {
+  &__input:focus, &--has-focus &__input {
     border-color: var(--color-falcon);
   }
 
-  &--has-focus &__input, &__input--has-value {
+  &--has-focus &__input, &__input--has-value, &__input:focus {
     & ~ .input-selector__label {
       transform: translateY(-8px);
     }
@@ -66,7 +66,7 @@
     text-align: left;
     font-size: var(--font-size-14);
 
-    &:hover {
+    &:hover, &:focus {
       background-color: var(--color-black-haze);
     }
   }

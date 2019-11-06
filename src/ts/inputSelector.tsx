@@ -35,15 +35,15 @@ function InputSelector<T extends Name>({ values, onSelectValue, label }: InputSe
     setInput(e.target.value);
   }
 
-  function onFocus() {
+  function onFocus(): void {
     setIsSelectorFocused(true);
   }
 
-  function onBlur() {
+  function onBlur(): void {
     setIsSelectorFocused(false);
   }
 
-  function onSelect(value: T) {
+  function onSelect(value: T): void {
     onSelectValue(value);
     setInput('');
     setIsSelectorFocused(false);
