@@ -31,4 +31,5 @@ export enum API {
   GET_COUNTRIES = 'https://api.openaq.org/v1/countries',
   GET_CITIES = 'https://api.openaq.org/v1/cities',
   GET_LOCATIONS = 'https://api.openaq.org/v1/locations',
+  GET_MEASUREMENTS = 'https://api.openaq.org/v1/measurements',
 }

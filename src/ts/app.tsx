@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchPage from './searchPage';
+import LocationDataPage from './locationDataPage';
 import {Location} from './types';
 
 function App() {
@@ -12,7 +13,13 @@ function App() {
         <h2 className="page__sub-title">Find air quality data for a particular location</h2>
       </header>
       <main>
-        <SearchPage setSelectedLocation={setSelectedLocation} />
+        {
+          selectedLocation ? (
+            <LocationDataPage location={selectedLocation} />
+          ) : (
+            <SearchPage setSelectedLocation={setSelectedLocation} />
+          )
+        }
       </main>
       <footer className="page__footer">page footer</footer>
     </div>
