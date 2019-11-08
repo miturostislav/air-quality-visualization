@@ -15,7 +15,7 @@ function App() {
       <main>
         {
           selectedLocation ? (
-            <LocationDataPage location={selectedLocation} />
+            <LocationDataPage location={selectedLocation} goBack={() => setSelectedLocation(null)} />
           ) : (
             <SearchPage setSelectedLocation={setSelectedLocation} />
           )

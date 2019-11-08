@@ -14,7 +14,22 @@ export interface Location {
   city: string;
   count: number;
   parameters: Parameter[];
+}
 
+export interface Measurement {
+  location: string;
+  city: string;
+  country: string;
+  parameter: Parameter;
+  value: number;
+  unit: string;
+  coordinates: {
+    latitude: number;
+    longitude: number;
+  };
+  date: {
+    local: string;
+  };
 }
 
 export enum Parameter {
