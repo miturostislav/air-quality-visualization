@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchPage from './searchPage';
-import LocationDataPage from './locationDataPage';
+import LocationSearch from './locationSearch/locationSearch';
+import MeasurementsResults from './measurementsResults';
 import {Location} from './types';
 
 function App() {
@@ -15,9 +15,9 @@ function App() {
       <main>
         {
           selectedLocation ? (
-            <LocationDataPage location={selectedLocation} goBack={() => setSelectedLocation(null)} />
+            <MeasurementsResults location={selectedLocation} goBack={() => setSelectedLocation(null)} />
           ) : (
-            <SearchPage setSelectedLocation={setSelectedLocation} />
+            <LocationSearch setSelectedLocation={setSelectedLocation} />
           )
         }
       </main>

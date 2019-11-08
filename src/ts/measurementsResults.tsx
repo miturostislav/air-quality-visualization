@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Location, Measurement, API } from './types';
 import ajaxRequest from './helpers/ajaxRequest';
 
-interface LocationDataPageProps {
+interface MeasurementsResultsProps {
   location: Location;
   goBack: () => void;
 }
 
-function LocationDataPage({ location, goBack }: LocationDataPageProps) {
+function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
   const [measurements, setMeasurements] = React.useState<Measurement[]>([]);
 
   React.useEffect(() => {
@@ -72,4 +72,4 @@ function LocationDataPage({ location, goBack }: LocationDataPageProps) {
   );
 }
 
-export default LocationDataPage;
+export default MeasurementsResults;

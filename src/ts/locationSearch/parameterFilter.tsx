@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Parameter } from './types';
+import { Parameter } from '../types';
 
 interface ParameterFilterProps {
   selectedParameters: Parameter[];

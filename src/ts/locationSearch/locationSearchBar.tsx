@@ -1,8 +1,8 @@
 import * as React from 'react';
-import ajaxRequest from './helpers/ajaxRequest';
-import {Location, API} from './types';
+import ajaxRequest from '../helpers/ajaxRequest';
+import {Location, API} from '../types';
 
-interface LocationSearchProps {
+interface LocationSearchBarProps {
   locations: Location[];
   setLocations: React.Dispatch<React.SetStateAction<Location[]>>;
   setNrOfResults: React.Dispatch<React.SetStateAction<number>>;
@@ -11,13 +11,13 @@ interface LocationSearchProps {
   filterQuery: string;
 }
 
-function LocationSearch({
+function LocationSearchBar({
   setLocations,
   setNrOfResults,
   incrementPageRef,
   setIsFetching,
   filterQuery,
-}: LocationSearchProps): React.ReactElement {
+}: LocationSearchBarProps): React.ReactElement {
   const [input, setInput] = React.useState('');
   const [locationIdentifier, setLocationIdentifier] = React.useState('');
   const pageRef = React.useRef(1);
@@ -59,7 +59,7 @@ function LocationSearch({
   }
 
   return (
-    <form className="location-search" onSubmit={onSubmit}>
+    <form className="location-search-bar" onSubmit={onSubmit}>
       <div className="input-selector">
         <div className="input-selector__input-wrapper">
           <input
@@ -74,9 +74,9 @@ function LocationSearch({
           <label className="input-selector__label" htmlFor="countrySelector">Enter a location identifier</label>
         </div>
       </div>
-      <button type="submit" className="location-search__button">Search</button>
+      <button type="submit" className="location-search-bar__button">Search</button>
     </form>
   );
 }
 
-export default LocationSearch;
+export default LocationSearchBar;

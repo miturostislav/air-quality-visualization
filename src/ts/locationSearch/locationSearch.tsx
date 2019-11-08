@@ -1,16 +1,16 @@
 import * as React from 'react';
-import LocationSearch from './locationSearch';
+import LocationSearchBar from './locationSearchBar';
 import CountryFilter from './countryFilter';
 import CityFilter from './cityFilter';
 import ParameterFilter from './parameterFilter';
 import SearchResults from './searchResults';
-import {Country, City, Parameter, Location} from './types';
+import {Country, City, Parameter, Location} from '../types';
 
-interface SearchPageProps {
+interface LocationSearchProps {
   setSelectedLocation: (location: Location) => void
 }
 
-function SearchPage({ setSelectedLocation }: SearchPageProps) {
+function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
   const [selectedCountries, setSelectedCountries] = React.useState<Country[]>([]);
   const [selectedCities, setSelectedCities] = React.useState<City[]>([]);
   const [selectedParameters, setSelectedParameters] = React.useState<Parameter[]>([]);
@@ -29,8 +29,8 @@ function SearchPage({ setSelectedLocation }: SearchPageProps) {
   }, [selectedCountries, selectedCities, selectedParameters]);
 
   return (
-    <div className="search-page">
-      <LocationSearch
+    <div className="location-search">
+      <LocationSearchBar
         locations={locations}
         setLocations={setLocations}
         setNrOfResults={setNrOfResults}
@@ -38,10 +38,10 @@ function SearchPage({ setSelectedLocation }: SearchPageProps) {
         setIsFetching={setIsFetching}
         filterQuery={filterQuery}
       />
-      <div className="search-page__filters">
-        <button className="search-page__filters-title" onClick={() => setIsFilerSectionOpened(!isFilerSectionOpened)}>Filters</button>
+      <div className="location-search__filters">
+        <button className="location-search__filters-title" onClick={() => setIsFilerSectionOpened(!isFilerSectionOpened)}>Filters</button>
         <div
-          className="search-page__filters-wrapper"
+          className="location-search__filters-wrapper"
           ref={filtersWrapperRef}
           style={{ maxHeight: isFilerSectionOpened ? (filtersWrapperRef.current ? filtersWrapperRef.current.scrollHeight : 0) : 0 }}
         >
@@ -63,4 +63,4 @@ function SearchPage({ setSelectedLocation }: SearchPageProps) {
   );
 }
 
-export default SearchPage;
+export default LocationSearch;

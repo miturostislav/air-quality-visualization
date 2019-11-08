@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Location } from './types';
+import { Location } from '../types';
 
 interface SearchResultsProps {
   locations: Location[];

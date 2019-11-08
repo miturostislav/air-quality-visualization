@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {API, Country} from './types';
-import ajaxRequest from './helpers/ajaxRequest';
-import InputSelector from './inputSelector';
-import closeCircle from '../svg/close-circle.svg';
+import {API, Country} from '../types';
+import ajaxRequest from '../helpers/ajaxRequest';
+import InputSelector from '../components/inputSelector';
+import closeCircle from '../../svg/close-circle.svg';
 
 interface CountryFilterProps {
   selectedCountries: Country[]
