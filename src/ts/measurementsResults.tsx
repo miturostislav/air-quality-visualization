@@ -17,8 +17,8 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
     const dateFrom = new Date();
     const dateTo = new Date();
 
-    dateFrom.setDate(dateFrom.getDate() - page);
-    dateTo.setDate(dateTo.getDate() - page + 1);
+    dateFrom.setDate(dateFrom.getDate() - page - 5);
+    dateTo.setDate(dateTo.getDate() - page - 4);
     setIsFetching(true);
     ajaxRequest({
       method: 'GET',
@@ -32,27 +32,27 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
   }, [location, page]);
 
   return (
-    <div className={`location-data-page ${isFetching ? 'location-data-page--disabled' : ''}`}>
-      <button className="location-data-page__back-button hide-xs-only" onClick={goBack}>Go back</button>
+    <div className={`measurements-results ${isFetching ? 'measurements-results--disabled' : ''}`}>
+      <button className="measurements-results__back-button hide-xs-only" onClick={goBack}>Go back</button>
       {
         isFetching && measurements.length === 0 ? (
           <p className="data-description">Fetching...</p>
         ) : measurements.length === 0 ? (
           <p className="data-description">No Results</p>
         ) : (
-          <div className="location-data-page__results-wrapper">
-            <table className="location-data-page__results">
+          <div className="measurements-results__results-wrapper">
+            <table className="measurements-results__results">
               <caption className="a11y-invisible-element">Location measurements</caption>
               <thead className="a11y-invisible-element-xs-only">
-              <tr role="row" className="location-data-page__item">
-                <th role="columnheader" className="location-data-page__location location-data-page__field" scope="col">Location</th>
-                <th role="columnheader" className="location-data-page__city location-data-page__field" scope="col">City</th>
-                <th role="columnheader" className="location-data-page__country location-data-page__field" scope="col">Country</th>
-                <th role="columnheader" className="location-data-page__parameter location-data-page__field" scope="col">Parameter</th>
-                <th role="columnheader" className="location-data-page__value location-data-page__field" scope="col">Value</th>
-                <th role="columnheader" className="location-data-page__unit location-data-page__field" scope="col">Unit</th>
-                <th role="columnheader" className="location-data-page__coordinates location-data-page__field" scope="col">Coordinates</th>
-                <th role="columnheader" className="location-data-page__date location-data-page__field" scope="col">Date</th>
+              <tr role="row" className="measurements-results__item">
+                <th role="columnheader" className="measurements-results__location measurements-results__field" scope="col">Location</th>
+                <th role="columnheader" className="measurements-results__city measurements-results__field" scope="col">City</th>
+                <th role="columnheader" className="measurements-results__country measurements-results__field" scope="col">Country</th>
+                <th role="columnheader" className="measurements-results__parameter measurements-results__field" scope="col">Parameter</th>
+                <th role="columnheader" className="measurements-results__value measurements-results__field" scope="col">Value</th>
+                <th role="columnheader" className="measurements-results__unit measurements-results__field" scope="col">Unit</th>
+                <th role="columnheader" className="measurements-results__coordinates measurements-results__field" scope="col">Coordinates</th>
+                <th role="columnheader" className="measurements-results__date measurements-results__field" scope="col">Date</th>
               </tr>
               </thead>
               <tbody>
@@ -63,40 +63,40 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
                     `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 
                   return (
-                    <tr role="row" key={measurement.date.local} className="location-data-page__item">
-                      <td role="cell" className="location-data-page__location location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Location</span>
-                        <span className="location-data-page__col-data ">{measurement.location}</span>
+                    <tr role="row" key={measurement.date.local} className="measurements-results__item">
+                      <td role="cell" className="measurements-results__location measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Location</span>
+                        <span className="measurements-results__col-data ">{measurement.location}</span>
                       </td>
-                      <td role="cell" className="location-data-page__city location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>City</span>
-                        <span className="location-data-page__col-data ">{measurement.city}</span>
+                      <td role="cell" className="measurements-results__city measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>City</span>
+                        <span className="measurements-results__col-data ">{measurement.city}</span>
                       </td>
-                      <td role="cell" className="location-data-page__country location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Country</span>
-                        <span className="location-data-page__col-data ">{measurement.country}</span>
+                      <td role="cell" className="measurements-results__country measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Country</span>
+                        <span className="measurements-results__col-data ">{measurement.country}</span>
                       </td>
-                      <td role="cell" className="location-data-page__parameter location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Parameter</span>
-                        <span className="location-data-page__col-data ">{measurement.parameter}</span>
+                      <td role="cell" className="measurements-results__parameter measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Parameter</span>
+                        <span className="measurements-results__col-data ">{measurement.parameter}</span>
                       </td>
-                      <td role="cell" className="location-data-page__value location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Value</span>
-                        <span className="location-data-page__col-data">{measurement.value}</span>
+                      <td role="cell" className="measurements-results__value measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Value</span>
+                        <span className="measurements-results__col-data">{measurement.value}</span>
                       </td>
-                      <td role="cell" className="location-data-page__unit location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Unit</span>
-                        <span className="location-data-page__col-data">{measurement.unit}</span>
+                      <td role="cell" className="measurements-results__unit measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Unit</span>
+                        <span className="measurements-results__col-data">{measurement.unit}</span>
                       </td>
-                      <td role="cell" className="location-data-page__coordinates location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Coordinates</span>
-                        <span className="location-data-page__col-data">
+                      <td role="cell" className="measurements-results__coordinates measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Coordinates</span>
+                        <span className="measurements-results__col-data">
                           {measurement.coordinates.latitude.toFixed(4)}, {measurement.coordinates.longitude.toFixed(4)}
                         </span>
                       </td>
-                      <td role="cell" className="location-data-page__date location-data-page__field">
-                        <span className="location-data-page__col-header hide-sm-up" aria-hidden>Date</span>
-                        <span className="location-data-page__col-data">{formattedDate}</span>
+                      <td role="cell" className="measurements-results__date measurements-results__field">
+                        <span className="measurements-results__col-header hide-sm-up" aria-hidden>Date</span>
+                        <span className="measurements-results__col-data">{formattedDate}</span>
                       </td>
                     </tr>
                   )

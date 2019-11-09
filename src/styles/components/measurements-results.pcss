@@ -1,4 +1,4 @@
-.location-data-page {
+.measurements-results {
   display: flex;
 
   &--disabled {
@@ -49,7 +49,9 @@
   }
 
   &__col-header, &__col-data {
-    flex-basis: 50%;
+    @media (--xs-viewport-only) {
+      flex-basis: 50%;
+    }
   }
 
   &__col-header {
