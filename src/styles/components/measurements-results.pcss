@@ -1,9 +1,18 @@
 .location-data-page {
   display: flex;
 
+  &--disabled {
+    opacity: .8;
+  }
+
   &__back-button {
     width: 100px;
     height: 100px;
+  }
+
+  &__results-wrapper {
+    width: 100%;
+    flex-wrap: wrap;
   }
 
   &__results {
@@ -30,12 +39,17 @@
     }
   }
 
-  &__field, &__col-header {
-    flex-basis: 50%;
+  &__field {
+    display: flex;
+    flex-basis: 100%;
 
     @media (--xs-viewport-only) {
       padding: 5px 0;
     }
+  }
+
+  &__col-header, &__col-data {
+    flex-basis: 50%;
   }
 
   &__col-header {

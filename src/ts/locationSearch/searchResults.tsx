@@ -13,10 +13,10 @@ function SearchResults({ locations, setSelectedLocation, nrOfResults, incrementP
   return (
     <div className={`search-results ${isFetching ? 'search-results--disabled' : ''}`}>
       {
-        isFetching ? (
-          <p className="search-results__no-results">Fetching...</p>
+        isFetching && nrOfResults === 0 ? (
+          <p className="data-description">Fetching...</p>
         ) : nrOfResults === 0 ? (
-          <p className="search-results__no-results">No Results</p>
+          <p className="data-description">No Results</p>
         ) : (
           <>
             <div className="search-results__titles">

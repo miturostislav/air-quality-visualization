@@ -35,7 +35,7 @@ function LocationSearchBar({
       setIsFetching(false);
     });
     return () => abortController.abort();
-  }, [query, setLocations, setNrOfResults]);
+  }, [query, setLocations, setNrOfResults, setIsFetching]);
 
   React.useEffect(() => {
     incrementPageRef.current = () => {
