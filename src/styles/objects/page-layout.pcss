@@ -26,3 +26,52 @@
   border-top: 1px solid var(--color-iron);
   position: relative;
 }
+
+.button-primary {
+  width: 100%;
+  text-align: center;
+  border-radius: 4px;
+  background-color: var(--color-iron);
+  margin-top: 20px;
+  padding: 12px;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 10px;
+  margin-top: 5px;
+  border: 1px solid var(--color-iron);
+  border-radius: 4px;
+  cursor: pointer;
+
+  @media (--sm-viewport) {
+    height: 55px;
+
+    &:hover {
+      border-color: var(--color-falcon);
+    }
+  }
+}
+
+.table-cell {
+  display: flex;
+  flex-basis: 100%;
+
+  @media (--xs-viewport-only) {
+    padding: 5px 0;
+  }
+}
+
+.table-col-header, .table-col-data {
+  @media (--xs-viewport-only) {
+    flex-basis: 50%;
+  }
+}
+
+.table-col-header {
+  font-weight: var(--font-weight-600);
+}
