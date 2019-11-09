@@ -17,8 +17,8 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
     const dateFrom = new Date();
     const dateTo = new Date();
 
-    dateFrom.setDate(dateFrom.getDate() - page - 5);
-    dateTo.setDate(dateTo.getDate() - page - 4);
+    dateFrom.setDate(dateFrom.getDate() - page);
+    dateTo.setDate(dateTo.getDate() - page + 1);
     setIsFetching(true);
     ajaxRequest({
       method: 'GET',
