@@ -4,6 +4,7 @@ import CountryFilter from './countryFilter';
 import CityFilter from './cityFilter';
 import ParameterFilter from './parameterFilter';
 import SearchResults from './searchResults';
+import mediaQuery from '../helpers/mediaQuery';
 import {Country, City, Parameter, Location} from '../types';
 
 interface LocationSearchProps {
@@ -16,7 +17,8 @@ function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
   const [selectedParameters, setSelectedParameters] = React.useState<Parameter[]>([]);
   const [locations, setLocations] = React.useState<Location[]>([]);
   const [isFetching, setIsFetching] = React.useState(true);
-  const [isFilerSectionOpened, setIsFilerSectionOpened] = React.useState(true);
+  const [isFilerSectionOpened, setIsFilerSectionOpened] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(!mediaQuery.isMediumUp());
   const [nrOfResults, setNrOfResults] = React.useState(0);
   const filtersWrapperRef = React.useRef<HTMLDivElement>(null);
   const incrementPageRef = React.useRef(() => {});
@@ -27,6 +29,26 @@ function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
 
     return `?${countriesQuery}${citiesQuery}${parametersQuery}limit=10`;
   }, [selectedCountries, selectedCities, selectedParameters]);
+
+  React.useEffect(() => {
+    function onResize() {
+      const isMobileAfterResize = !mediaQuery.isMediumUp();
+      if (isMobileAfterResize !== isMobile) {
+        setIsMobile(isMobileAfterResize);
+      }
+    }
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  });
+
+  function getFiltersMaxHeight(): string | number {
+    if (!filtersWrapperRef.current) {
+      return 0;
+    }
+    return isMobile ? (
+      isFilerSectionOpened ? filtersWrapperRef.current.scrollHeight : 0
+    ) : 'none';
+  }
 
   return (
     <div className="location-search">
@@ -41,15 +63,17 @@ function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
       <div className="location-search__filters">
         <button className="location-search__filters-title" onClick={() => setIsFilerSectionOpened(!isFilerSectionOpened)}>Filters</button>
         <div
-          className="location-search__filters-wrapper"
+          className="location-search__filters-transition"
           ref={filtersWrapperRef}
-          style={{ maxHeight: isFilerSectionOpened ? (filtersWrapperRef.current ? filtersWrapperRef.current.scrollHeight : 0) : 0 }}
+          style={{ maxHeight: getFiltersMaxHeight() }}
         >
-          <CountryFilter selectedCountries={selectedCountries} setSelectedCountries={setSelectedCountries} />
-          <hr className="separator" />
-          <CityFilter selectedCities={selectedCities} setSelectedCities={setSelectedCities} selectedCountries={selectedCountries} />
-          <hr className="separator" />
-          <ParameterFilter selectedParameters={selectedParameters} setSelectedParameters={setSelectedParameters} />
+          <div className="location-search__filters-wrapper">
+            <CountryFilter selectedCountries={selectedCountries} setSelectedCountries={setSelectedCountries} />
+            <hr className="separator" />
+            <CityFilter selectedCities={selectedCities} setSelectedCities={setSelectedCities} selectedCountries={selectedCountries} />
+            <hr className="separator" />
+            <ParameterFilter selectedParameters={selectedParameters} setSelectedParameters={setSelectedParameters} />
+          </div>
         </div>
       </div>
       <SearchResults
