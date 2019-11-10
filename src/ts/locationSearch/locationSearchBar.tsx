@@ -69,7 +69,7 @@ function LocationSearchBar({
             id="countrySelector"
             onChange={onChange}
             value={input}
-            autoComplete="ignore"
+            autoComplete="off"
           />
           <label className="input-selector__label" htmlFor="countrySelector">Enter a location identifier</label>
         </div>

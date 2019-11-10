@@ -59,7 +59,7 @@ function InputSelector<T extends Name>({ values, onSelectValue, label }: InputSe
           onFocus={onFocus}
           onChange={onChange}
           value={input}
-          autoComplete="ignore"
+          autoComplete="off"
         />
         <label className="input-selector__label" htmlFor="countrySelector">{label}</label>
       </div>
