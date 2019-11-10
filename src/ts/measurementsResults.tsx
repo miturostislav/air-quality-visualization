@@ -98,37 +98,37 @@ function MeasurementsResults({ location, goBack, headerRef, isMobile }: Measurem
                     return (
                       <tr role="row" key={`${measurement.date.local}-${measurement.parameter}-${measurement.location}`} className="table-row">
                         <td role="cell" className="measurements-results__location table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Location</span>
+                          <span className="table-col-header" aria-hidden>Location</span>
                           <span className="table-col-data ">{measurement.location}</span>
                         </td>
                         <td role="cell" className="measurements-results__city table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>City</span>
+                          <span className="table-col-header" aria-hidden>City</span>
                           <span className="table-col-data ">{measurement.city}</span>
                         </td>
                         <td role="cell" className="measurements-results__country table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Country</span>
+                          <span className="table-col-header" aria-hidden>Country</span>
                           <span className="table-col-data ">{measurement.country}</span>
                         </td>
                         <td role="cell" className="measurements-results__parameter table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Parameter</span>
+                          <span className="table-col-header" aria-hidden>Parameter</span>
                           <span className="table-col-data ">{measurement.parameter}</span>
                         </td>
                         <td role="cell" className="measurements-results__value table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Value</span>
+                          <span className="table-col-header" aria-hidden>Value</span>
                           <span className="table-col-data">{measurement.value}</span>
                         </td>
                         <td role="cell" className="measurements-results__unit table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Unit</span>
+                          <span className="table-col-header" aria-hidden>Unit</span>
                           <span className="table-col-data">{measurement.unit}</span>
                         </td>
                         <td role="cell" className="measurements-results__coordinates table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Coordinates</span>
+                          <span className="table-col-header" aria-hidden>Coordinates</span>
                           <span className="table-col-data">
                           {measurement.coordinates.latitude.toFixed(4)}, {measurement.coordinates.longitude.toFixed(4)}
                         </span>
                         </td>
                         <td role="cell" className="measurements-results__date table-cell">
-                          <span className="table-col-header hide-sm-up" aria-hidden>Date</span>
+                          <span className="table-col-header" aria-hidden>Date</span>
                           <span className="table-col-data">{formattedDate}</span>
                         </td>
                       </tr>

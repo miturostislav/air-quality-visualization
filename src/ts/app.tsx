@@ -30,20 +30,24 @@ function App() {
       </header>
       <main className="page__main">
         {
-          selectedLocation ? (
+          selectedLocation && (
             <MeasurementsResults
               location={selectedLocation}
-              goBack={() => setSelectedLocation(null)}
+              goBack={() => {
+                setSelectedLocation(null);
+                window.scrollTo(0, 0);
+              }}
               headerRef={headerRef}
-              isMobile={isMobile}
-            />
-          ) : (
-            <LocationSearch
-              setSelectedLocation={setSelectedLocation}
               isMobile={isMobile}
             />
           )
         }
+        <div className={selectedLocation ? 'hide' : ''}>
+          <LocationSearch
+            setSelectedLocation={setSelectedLocation}
+            isMobile={isMobile}
+          />
+        </div>
       </main>
       <footer className="page__footer">
         <img className="page__footer-img" src={letterR} alt="Letter R" />

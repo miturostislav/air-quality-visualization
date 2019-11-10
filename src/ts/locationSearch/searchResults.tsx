@@ -41,23 +41,23 @@ function SearchResults({ locations, setSelectedLocation, nrOfResults, incrementP
                     onClick={() => setSelectedLocation(location)}
                   >
                     <td role="cell" className="search-results__location table-cell">
-                      <span className="table-col-header hide-sm-up" aria-hidden>Identifier</span>
+                      <span className="table-col-header" aria-hidden>Identifier</span>
                       <span className="table-col-data ">{location.location}</span>
                     </td>
                     <td role="cell" className="search-results__city table-cell">
-                      <span className="table-col-header hide-sm-up" aria-hidden>City</span>
+                      <span className="table-col-header" aria-hidden>City</span>
                       <span className="table-col-data ">{location.city}</span>
                     </td>
                     <td role="cell" className="search-results__country table-cell">
-                      <span className="table-col-header hide-sm-up" aria-hidden>Country</span>
+                      <span className="table-col-header" aria-hidden>Country</span>
                       <span className="table-col-data ">{location.country}</span>
                     </td>
                     <td role="cell" className="search-results__count table-cell">
-                      <span className="table-col-header hide-sm-up" aria-hidden>Count</span>
+                      <span className="table-col-header" aria-hidden>Count</span>
                       <span className="search-results__col-count ">{location.count}</span>
                     </td>
                     <td role="cell" className="search-results__parameters table-cell">
-                      <span className="table-col-header hide-sm-up" aria-hidden>Parameters</span>
+                      <span className="table-col-header" aria-hidden>Parameters</span>
                       <span className="table-col-data">
                       {
                         location.parameters.map((parameter) => (

@@ -179,8 +179,13 @@ ul {
 }
   }
 .table-col-header {
-  font-weight: var(--font-weight-600);
+  font-weight: var(--font-weight-600)
 }
+@media only screen and (min-width: 48em) {
+.table-col-header {
+    display: none
+}
+  }
 .location-search {
   display: flex;
   flex-wrap: wrap;
@@ -488,11 +493,7 @@ ul {
   overflow: hidden;
   font-size: 0;
 }
-@media only screen and (min-width: 48em) {
-  .hide-sm-up { display: none; }
-}
 @media only screen and (max-width: 47.9375em) {
-  .hide-xs-only { display: none; }
   .a11y-invisible-element-xs-only {
     position: absolute;
     clip: rect(1px, 1px, 1px, 1px);
