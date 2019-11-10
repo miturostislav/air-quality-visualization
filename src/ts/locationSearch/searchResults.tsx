@@ -25,8 +25,8 @@ function SearchResults({ locations, setSelectedLocation, nrOfResults, incrementP
               <thead className="a11y-invisible-element-xs-only">
               <tr role="row" className="table-row">
                 <th role="columnheader" className="search-results__location table-cell" scope="col">Identifier</th>
-                <th role="columnheader" className="search-results__city table-cell" scope="col">Country</th>
-                <th role="columnheader" className="search-results__country table-cell" scope="col">City</th>
+                <th role="columnheader" className="search-results__city table-cell" scope="col">City</th>
+                <th role="columnheader" className="search-results__country table-cell" scope="col">Country</th>
                 <th role="columnheader" className="search-results__count table-cell" scope="col">Count</th>
                 <th role="columnheader" className="search-results__parameters table-cell" scope="col">Parameters</th>
               </tr>
@@ -36,7 +36,7 @@ function SearchResults({ locations, setSelectedLocation, nrOfResults, incrementP
                 locations.map((location) => (
                   <tr
                     role="row button"
-                    key={`${location.location}-${location.city}-${location.country}-${location.count}`}
+                    key={location.id}
                     className="table-row"
                     onClick={() => setSelectedLocation(location)}
                   >
