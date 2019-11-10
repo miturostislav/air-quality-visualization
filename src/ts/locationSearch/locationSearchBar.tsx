@@ -37,14 +37,14 @@ function LocationSearchBar({
     return () => abortController.abort();
   }, [query, setLocations, setNrOfResults, setIsFetching]);
 
-  React.useEffect(() => {
+  React.useEffect(function setIncrementPageCallback() {
     incrementPageRef.current = () => {
       pageRef.current++;
       fetchLocations();
     };
   }, [fetchLocations, incrementPageRef]);
 
-  React.useEffect(() => {
+  React.useEffect(function fetchLocationsOnQueryChange() {
     pageRef.current = 1;
     return fetchLocations();
   }, [fetchLocations]);

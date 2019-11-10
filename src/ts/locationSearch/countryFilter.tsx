@@ -13,7 +13,7 @@ function CountryFilter({ selectedCountries, setSelectedCountries }: CountryFilte
   const [countries, setCountries] = React.useState<Country[]>([]);
   const unselectedCountries = React.useMemo(() => countries.filter((country) => selectedCountries.indexOf(country) === -1), [countries, selectedCountries])
 
-  React.useEffect(() => {
+  React.useEffect(function fetchCountries() {
     ajaxRequest({ method: 'GET', url: API.GET_COUNTRIES }).then(({ results }: { results: Country[] }) => {
       setCountries(results);
     })

@@ -20,7 +20,7 @@ function InputSelector<T extends Name>({ values, onSelectValue, label }: InputSe
   const [isSelectorFocused, setIsSelectorFocused] = React.useState(false);
   const inputSelectorRef = React.useRef<HTMLDivElement>(null);
 
-  React.useEffect(() => {
+  React.useEffect(function triggerOnBlurOnOutOfSuggestionsClick() {
     function onClick(e: MouseEvent) {
       if (inputSelectorRef.current && !inputSelectorRef.current.contains(e.target as Node)) {
         onBlur();

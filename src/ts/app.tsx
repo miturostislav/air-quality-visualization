@@ -10,7 +10,7 @@ function App() {
   const headerRef = React.useRef(null);
   const [isMobile, setIsMobile] = React.useState(!mediaQuery.isMediumUp());
 
-  React.useEffect(() => {
+  React.useEffect(function handleIsMobileFlagOnResize() {
     function onResize() {
       const isMobileAfterResize = !mediaQuery.isMediumUp();
 

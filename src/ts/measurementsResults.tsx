@@ -16,7 +16,7 @@ function MeasurementsResults({ location, goBack, headerRef, isMobile }: Measurem
   const [isFetching, setIsFetching] = React.useState(true);
   const backButtonRef = React.useRef<HTMLButtonElement>(null);
 
-  React.useEffect(() => {
+  React.useEffect(function fetchLocationMeasurements() {
     const parametersQuery = `${location.parameters.length ? `parameter[]=${location.parameters.join('&parameter[]=')}` : ''}`;
     const dateFrom = new Date();
     const dateTo = new Date();
@@ -35,7 +35,7 @@ function MeasurementsResults({ location, goBack, headerRef, isMobile }: Measurem
     });
   }, [location, page]);
 
-  React.useEffect(() => {
+  React.useEffect(function handleBackButtonOnScroll() {
     function handleBackButtonPositionOnScroll() {
       if (backButtonRef.current && headerRef.current) {
         if (isMobile) {
