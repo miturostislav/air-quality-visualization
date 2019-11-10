@@ -3,6 +3,7 @@ import LocationSearch from './locationSearch/locationSearch';
 import MeasurementsResults from './measurementsResults';
 import {Location} from './types';
 import mediaQuery from './helpers/mediaQuery';
+import letterR from '../svg/letter-r.svg';
 
 function App() {
   const [selectedLocation, setSelectedLocation] = React.useState<Location | null>(null);
@@ -44,7 +45,10 @@ function App() {
           )
         }
       </main>
-      <footer className="page__footer">page footer</footer>
+      <footer className="page__footer">
+        <img className="page__footer-img" src={letterR} alt="Letter R" />
+        <span>Copyright © 2019 Mitu Rostislav</span>
+      </footer>
     </div>
   );
 }
