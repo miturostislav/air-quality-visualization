@@ -55,7 +55,7 @@ function MeasurementsResults({ location, goBack, headerRef, isMobile }: Measurem
     window.addEventListener('scroll', handleBackButtonPositionOnScroll);
     handleBackButtonPositionOnScroll();
     return () => window.removeEventListener('scroll', handleBackButtonPositionOnScroll);
-  }, [isMobile]);
+  }, [isMobile, headerRef]);
 
   return (
     <div className={`measurements-results ${isFetching ? 'measurements-results--disabled' : ''}`}>
