@@ -107,7 +107,7 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
             {
               page < 7 && (
                 <button className="button-primary" onClick={() => setPage(page + 1)} disabled={isFetching}>
-                  Show one more page
+                  Show one more day
                 </button>
               )
             }
