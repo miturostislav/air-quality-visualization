@@ -4,21 +4,20 @@ import CountryFilter from './countryFilter';
 import CityFilter from './cityFilter';
 import ParameterFilter from './parameterFilter';
 import SearchResults from './searchResults';
-import mediaQuery from '../helpers/mediaQuery';
 import {Country, City, Parameter, Location} from '../types';
 
 interface LocationSearchProps {
-  setSelectedLocation: (location: Location) => void
+  setSelectedLocation: (location: Location) => void;
+  isMobile: boolean;
 }
 
-function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
+function LocationSearch({ setSelectedLocation, isMobile }: LocationSearchProps) {
   const [selectedCountries, setSelectedCountries] = React.useState<Country[]>([]);
   const [selectedCities, setSelectedCities] = React.useState<City[]>([]);
   const [selectedParameters, setSelectedParameters] = React.useState<Parameter[]>([]);
   const [locations, setLocations] = React.useState<Location[]>([]);
   const [isFetching, setIsFetching] = React.useState(true);
   const [isFilerSectionOpened, setIsFilerSectionOpened] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(!mediaQuery.isMediumUp());
   const [nrOfResults, setNrOfResults] = React.useState(0);
   const filtersWrapperRef = React.useRef<HTMLDivElement>(null);
   const incrementPageRef = React.useRef(() => {});
@@ -29,17 +28,6 @@ function LocationSearch({ setSelectedLocation }: LocationSearchProps) {
 
     return `?${countriesQuery}${citiesQuery}${parametersQuery}limit=10`;
   }, [selectedCountries, selectedCities, selectedParameters]);
-
-  React.useEffect(() => {
-    function onResize() {
-      const isMobileAfterResize = !mediaQuery.isMediumUp();
-      if (isMobileAfterResize !== isMobile) {
-        setIsMobile(isMobileAfterResize);
-      }
-    }
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  });
 
   function getFiltersMaxHeight(): string | number {
     if (!filtersWrapperRef.current) {

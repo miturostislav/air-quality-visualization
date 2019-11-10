@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { Location, Measurement, API } from './types';
 import ajaxRequest from './helpers/ajaxRequest';
+import leftArrow from '../svg/left-arrow.svg';
 
 interface MeasurementsResultsProps {
   location: Location;
   goBack: () => void;
+  headerRef: React.MutableRefObject<HTMLElement | null>;
+  isMobile: boolean;
 }
 
-function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
+function MeasurementsResults({ location, goBack, headerRef, isMobile }: MeasurementsResultsProps) {
   const [measurements, setMeasurements] = React.useState<Measurement[]>([]);
   const [page, setPage] = React.useState(0);
   const [isFetching, setIsFetching] = React.useState(true);
+  const backButtonRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
     const parametersQuery = `parameter[]=${location.parameters.join('&parameter[]=')}`;
@@ -31,9 +35,37 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
     });
   }, [location, page]);
 
+  React.useEffect(() => {
+    function handleBackButtonPositionOnScroll() {
+      if (backButtonRef.current && headerRef.current) {
+        if (isMobile) {
+          backButtonRef.current.style.removeProperty('top');
+        } else {
+          const headerHeight = headerRef.current ? headerRef.current.offsetHeight : 0;
+          const isHeaderVisible = window.scrollY <= headerHeight;
+
+          backButtonRef.current.style.setProperty(
+            'top',
+            isHeaderVisible ? `${headerRef.current.offsetHeight - window.scrollY}px` : '0px'
+          );
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleBackButtonPositionOnScroll);
+    handleBackButtonPositionOnScroll();
+    return () => window.removeEventListener('scroll', handleBackButtonPositionOnScroll);
+  }, [isMobile]);
+
   return (
     <div className={`measurements-results ${isFetching ? 'measurements-results--disabled' : ''}`}>
-      <button className="measurements-results__back-button hide-xs-only" onClick={goBack}>Go back</button>
+      <button
+        className="measurements-results__back-button"
+        onClick={goBack}
+        ref={backButtonRef}
+      >
+        <img src={leftArrow} alt="Go back" />
+      </button>
       {
         isFetching && measurements.length === 0 ? (
           <p className="data-description">Fetching...</p>
@@ -63,7 +95,7 @@ function MeasurementsResults({ location, goBack }: MeasurementsResultsProps) {
                     `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 
                   return (
-                    <tr role="row" key={measurement.date.local} className="table-row">
+                    <tr role="row" key={`${measurement.date.local}-${measurement.parameter}-${measurement.location}`} className="table-row">
                       <td role="cell" className="measurements-results__location table-cell">
                         <span className="table-col-header hide-sm-up" aria-hidden>Location</span>
                         <span className="table-col-data ">{measurement.location}</span>

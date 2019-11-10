@@ -225,13 +225,28 @@ ul {
     opacity: .8;
   }
 .measurements-results__back-button {
-    width: 100px;
-    height: 100px;
+    position: fixed;
+    width: 72px;
+    height: 72px;
+    padding: 12px 10px
   }
+@media only screen and (max-width: 47.9375em) {
+
+  .measurements-results__back-button {
+      bottom: 10px;
+      background-color: var(--color-iron);
+      border-radius: 50%
+  }
+    }
 .measurements-results__results-wrapper {
-    width: 100%;
-    flex-wrap: wrap;
+    width: 100%
   }
+@media only screen and (min-width: 48em) {
+
+  .measurements-results__results-wrapper {
+      margin-left: 72px
+  }
+    }
 .measurements-results__results {
     width: 100%;
   }

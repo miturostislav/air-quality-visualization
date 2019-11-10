@@ -6,13 +6,24 @@
   }
 
   &__back-button {
-    width: 100px;
-    height: 100px;
+    position: fixed;
+    width: 72px;
+    height: 72px;
+    padding: 12px 10px;
+
+    @media (--xs-viewport-only) {
+      bottom: 10px;
+      background-color: var(--color-iron);
+      border-radius: 50%;
+    }
   }
 
   &__results-wrapper {
     width: 100%;
-    flex-wrap: wrap;
+
+    @media (--sm-viewport) {
+      margin-left: 72px;
+    }
   }
 
   &__results {
