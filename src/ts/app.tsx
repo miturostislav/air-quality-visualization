@@ -28,7 +28,7 @@ function App() {
         <h1 className="page__title">Air quality data</h1>
         <h2 className="page__sub-title">Find air quality data for a particular location</h2>
       </header>
-      <main>
+      <main className="page__main">
         {
           selectedLocation ? (
             <MeasurementsResults

@@ -102,8 +102,14 @@ ul {
   margin: 0 auto;
   padding: 0 10px;
 }
+.page__title, .page__sub-title {
+    text-align: center;
+  }
 .page__header {
     height: 100px;
+  }
+.page__main {
+    min-height: calc(100vh - 220px);
   }
 .page__footer {
     display: flex;
