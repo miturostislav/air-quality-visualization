@@ -66,7 +66,7 @@ function LocationSearch({ setSelectedLocation, isMobile }: LocationSearchProps) 
       </div>
       <SearchResults
         locations={locations}
-        setSelectedLocation={setSelectedLocation}
+        setSelectedLocation={(selectedLocation) => setSelectedLocation({ ...selectedLocation, parameters: selectedParameters })}
         nrOfResults={nrOfResults}
         incrementPage={incrementPageRef.current}
         isFetching={isFetching}
